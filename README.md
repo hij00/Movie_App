@@ -2,7 +2,7 @@
 
 # ToDo
 
-- [ ] Package Install
+- [x] Package Install
 - [ ] Router Setup
 - [ ] Create Components
 - [ ] Helmet
