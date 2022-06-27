@@ -5,6 +5,7 @@ export const mainStyle = {
   bgColor: "#1d1d1d",
   color: "white",
   mainColor: "crimson",
+  padding: "0 80px",
 };
 
 export const GlobalStyled = createGlobalStyle`
@@ -17,6 +18,8 @@ body{
     background-color: ${mainStyle.bgColor};
     color: ${mainStyle.color};
     letter-spacing: -1px;
+    word-break: keep-all;
+    /* 줄바꿈 자동으로 단어별 */
 }
 a{
     text-decoration: none;
