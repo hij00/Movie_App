@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { movieApi } from "../../../api";
-import { imgUrl, movieNum } from "../../../constants/constant";
+import { movieNum } from "../../../constants/constant";
 import { Loading } from "../../Loading";
 import { MainBanner } from "./MainBanner";
 import "swiper/css";
-
-const Movies = styled.div``;
-const Title = styled.div``;
-const MovieImg = styled.div`
-  height: 250px;
-`;
-const MovieTitle = styled.div``;
+import { Container } from "../../Container";
+import { Movies } from "./Movies";
 
 export const Home = () => {
   const [playing, setPlaying] = useState();
@@ -96,24 +88,17 @@ export const Home = () => {
 
         // 여기에 배열순서 입력하거나 순서 파일 따로 빼기(constant 파일)
         <>
-          {playing && <MainBanner playData={playing[movieNum]} />}
-          <Movies>
-            <Title>현재 상영 영화</Title>
-            <Swiper slidesPerView={5.5} spaceBetween={20}>
-              {playing.map((play) => (
-                <SwiperSlide>
-                  <Link to={"#"}>
-                    <MovieImg
-                      style={{
-                        background: `url(${imgUrl}${play.backdrop_path}) no-repeat center / cover`,
-                      }}
-                    />
-                    <MovieTitle>{play.title}</MovieTitle>
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Movies>
+          {playing && (
+            <>
+              <MainBanner playData={playing[movieNum]} />
+              <Container>
+                <Movies movieData={playing} title="현재 상영 영화" />
+                {/* => playing 프롭스로 전달하기 */}
+                <Movies movieData={rated} title="인기 영화" />
+                <Movies movieData={upComing} title="개봉 예정 영화" />
+              </Container>
+            </>
+          )}
         </>
       )}
 
