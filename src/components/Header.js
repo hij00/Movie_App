@@ -5,7 +5,8 @@ import { mainStyle } from "../styles/globalStyle";
 const SHeader = styled.div`
   max-width: 100%;
   width: 100%;
-  padding: 0 80px;
+  padding: ${mainStyle.padding};
+  /* => 하나 글로벌 스타일로 지정하면 나머지도 다 미리 글로벌스타일 적용해주기~ */
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -13,6 +14,11 @@ const SHeader = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 999;
+  /* 모바일은 넓게 말고 길게 디자인 */
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mPadding};
+  }
 `;
 
 const Logo = styled.h3`
@@ -20,6 +26,9 @@ const Logo = styled.h3`
   font-weight: 800;
   a {
     color: ${mainStyle.mainColor};
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 24px;
   }
 `;
 
@@ -33,6 +42,9 @@ const Menu = styled.li`
   margin-left: 100px;
   font-size: 18px;
   font-weight: 500;
+  @media screen and (max-width: 500px) {
+    margin-left: 20px;
+  }
 `;
 
 export const Header = () => {
@@ -43,10 +55,10 @@ export const Header = () => {
       </Logo>
       <MenuWrap>
         <Menu>
-          <Link to={"/"}>홈</Link>
+          <Link to={"/"}>Home</Link>
         </Menu>
         <Menu>
-          <Link to={"/search"}>영화검색</Link>
+          <Link to={"/search"}>Search</Link>
         </Menu>
       </MenuWrap>
     </SHeader>

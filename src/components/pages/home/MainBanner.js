@@ -4,9 +4,12 @@ import { mainStyle } from "../../../styles/globalStyle";
 
 const Banner = styled.section`
   height: 80vh;
-  background-color: gray;
   padding: ${mainStyle.padding};
   padding-top: 250px;
+  @media screen and (max-width: 500px) {
+    height: 100vh;
+    position: relative;
+  }
 `;
 
 const Title = styled.h1`
@@ -14,8 +17,16 @@ const Title = styled.h1`
   font-weight: 700;
   max-width: 650px;
   /* 브라우저를 늘려도 최대한의 가로길이가 650px */
-  width: 100%;
+  /* width: 100%; */
   line-height: 6rem;
+  @media screen and (max-width: 500px) {
+    font-size: 45px;
+    line-height: 3rem;
+    position: absolute;
+    bottom: 20%;
+    left: 20px;
+    /* 넘치면 부모에 overflow: hidden; or 부모의 가로값 100% ㄴㄴ or transform: translateX(20px)*/
+  }
 `;
 
 const Desc = styled.p`
@@ -26,6 +37,9 @@ const Desc = styled.p`
   line-height: 2rem;
   opacity: 0.9;
   font-weight: 300;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const MainBanner = ({ playData }) => {
