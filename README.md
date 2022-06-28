@@ -18,7 +18,7 @@
 - [x] Try Catch
 - [x] Loading
 - [ ] Header Event
-- [ ] Slide
+- [x] Slide
 
 ## Detail Page
 
