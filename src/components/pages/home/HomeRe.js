@@ -10,34 +10,11 @@ const Title = styled.div``;
 const Desc = styled.div``;
 
 export const HomeRe = () => {
-  const [nowPlay, setNowPlay] = useState();
-
   useEffect(() => {
-    try {
-      const movieRE = async () => {
-        //   console.log(await movieApi.nowPlaying());
-
-        const {
-          data: { results: nowP },
-        } = await movieApi.nowPlaying();
-        //   console.log(results);
-        setNowPlay(nowP);
-      };
-      a;
-    } catch (error) {}
-    movieRE();
+    const movieRe = () => {
+      console.log(movieApi);
+    };
   }, []);
 
-  return nowPlay ? (
-    <Wrap
-      style={{
-        background: `url(${imgUrl}${nowPlay[0].backdrop_path}) no-repeat center / cover`,
-      }}
-    >
-      <Title></Title>
-      <Desc></Desc>
-    </Wrap>
-  ) : (
-    "loading..."
-  );
+  return <></>;
 };

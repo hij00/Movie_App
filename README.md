@@ -10,19 +10,23 @@
 - [x] Helmet
 - [x] Get Api
 - [x] Container
-- [x] Responsive
+- [x] Header Responsive
+- [ ] Main Container Responsive
 
 ## Main Page
 
 - [x] Use Effect
 - [x] Try Catch
 - [x] Loading
-- [ ] Header Event
 - [x] Slide
+- [ ] Slide Link
+- [ ] Slide Navigation
+- [ ] Header Event
 
 ## Detail Page
 
 - [ ] Video
+- [ ] Link
 
 ## Search Page
 
