@@ -11,7 +11,7 @@
 - [x] Get Api
 - [x] Container
 - [x] Header Responsive
-- [ ] Main Container Responsive
+- [x] Main Container Responsive
 
 ## Main Page
 
@@ -20,7 +20,7 @@
 - [x] Loading
 - [x] Slide
 - [ ] Slide Link
-- [ ] Slide Navigation
+- [x] Slide Navigation
 - [ ] Header Event
 - [ ] 404 Image
 
