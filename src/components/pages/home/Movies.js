@@ -46,7 +46,11 @@ export const Movies = ({ movieData, title }) => {
             <Link to={`/detail/${play.id}`}>
               <MovieImg
                 style={{
-                  background: `url(${imgUrl}${play.backdrop_path}) no-repeat center / cover`,
+                  background: `url(${
+                    play.backdrop_path
+                      ? `${imgUrl}${play.backdrop_path}`
+                      : "https://mapandan.gov.ph/wp-content/uploads/2018/03/no_image.jpg"
+                  }) no-repeat center / cover`,
                 }}
               />
               <MovieTitle>{play.title}</MovieTitle>

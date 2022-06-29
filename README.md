@@ -19,10 +19,10 @@
 - [x] Try Catch
 - [x] Loading
 - [x] Slide
-- [ ] Slide Link
+- [x] Slide Link
 - [x] Slide Navigation
-- [ ] Header Event
-- [ ] 404 Image
+- [x] Header Event
+- [x] 404 Image
 
 ## Detail Page
 

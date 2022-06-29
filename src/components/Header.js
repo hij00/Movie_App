@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/globalStyle";
@@ -11,10 +12,11 @@ const SHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
+  background-color: ${(props) => props.bgColor};
   /* 모바일은 넓게 말고 길게 디자인 */
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.mPadding};
@@ -48,8 +50,19 @@ const Menu = styled.li`
 `;
 
 export const Header = () => {
+  const [bg, setBg] = useState("rgba(0,0,0,0.3)");
+  const handleScroll = () => {
+    const scr = window.pageYOffset;
+    if (scr > 500) {
+      setBg("#1d1d1d");
+    } else {
+      setBg("rgba(0,0,0,0.3)");
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+
   return (
-    <SHeader>
+    <SHeader bgColor={bg}>
       <Logo>
         <Link to={"/"}>Movie</Link>
       </Logo>
