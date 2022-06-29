@@ -92,7 +92,7 @@ export const Home = () => {
             <>
               <MainBanner playData={playing[movieNum]} />
               <Container>
-                <Movies movieData={playing} title="현재 상영 영화" />
+                <Movies movieData={playing} title="222222현재 상영 영화" />
                 {/* => playing 프롭스로 전달하기 */}
                 <Movies movieData={rated} title="인기 영화" />
                 <Movies movieData={upComing} title="개봉 예정 영화" />

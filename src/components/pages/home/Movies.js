@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { imgUrl } from "../../../constants/constant";
 import styled from "styled-components";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation } from "swiper";
 
 import "swiper/css/navigation";
 
@@ -43,7 +43,7 @@ export const Movies = ({ movieData, title }) => {
       <Swiper modules={[Navigation]} navigation {...params}>
         {movieData.map((play) => (
           <SwiperSlide key={play.id}>
-            <Link to={"#"}>
+            <Link to={`/detail/${play.id}`}>
               <MovieImg
                 style={{
                   background: `url(${imgUrl}${play.backdrop_path}) no-repeat center / cover`,
