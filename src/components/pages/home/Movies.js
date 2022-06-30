@@ -36,6 +36,7 @@ export const Movies = ({ movieData, title }) => {
       },
     },
   };
+  // 슬라이드 반응형적용방법
 
   return (
     <SMovies>
