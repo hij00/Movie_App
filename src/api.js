@@ -13,4 +13,13 @@ export const movieApi = {
   topRated: () => api.get("/movie/top_rated"),
   latest: () => api.get("/movie/latest"),
   upComing: () => api.get("/movie/upcoming"),
+  movieDetail: (id) => api.get(`/movie/${id}`),
 };
+
+// const detail = (id) => {
+//   api.get(`/movie/${id}`)
+// }
+
+// detail(12345)
+
+// => id = 12345

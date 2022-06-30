@@ -6,6 +6,7 @@ const SFooter = styled.div`
   justify-content: center;
   align-items: center;
   border-top: 1px solid #555;
+  margin-top: 150px;
 `;
 export const Footer = () => {
   return (
