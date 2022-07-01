@@ -56,20 +56,21 @@ const Menu = styled.li`
   }
 `;
 
-const MoMenu = styled.div`
-  ul {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(3px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+const MoMenu = styled.div``;
+
+const MoMenuWrap = styled.ul`
+  position: absolute;
+  top: 0;
+  left: ${(props) => props.leftRe};
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.5s;
   li {
     font-size: 50px;
     font-weight: 700;
@@ -91,11 +92,13 @@ const CloseBtn = styled.li`
 // ul 태그 안으로 넣으면 li로 바꿔주기
 
 const MenuBtn = styled.div`
-  font-size: 30px;
+  font-size: 24px;
 `;
 
 export const Header = () => {
   const [bg, setBg] = useState("rgba(0,0,0,0.3)");
+  const [left, setLeft] = useState("100%");
+
   const handleScroll = () => {
     const scr = window.pageYOffset;
     if (scr > 500) {
@@ -105,6 +108,9 @@ export const Header = () => {
     }
   };
   window.addEventListener("scroll", handleScroll);
+
+  // const handleMenu = () => setLeft("0")
+  // const handleClose = () => setLeft("100%")
 
   return (
     <SHeader bgColor={bg}>
@@ -121,12 +127,14 @@ export const Header = () => {
       </MenuWrap>
 
       <MoMenu>
-        <MenuBtn>
+        {/* <MenuBtn onClick={handleMenu}>
+         */}
+        <MenuBtn onClick={() => setLeft("0")}>
           <FontAwesomeIcon icon={faBars} />
         </MenuBtn>
 
-        <ul>
-          <CloseBtn>
+        <MoMenuWrap leftRe={left}>
+          <CloseBtn onClick={() => setLeft("100%")}>
             <FontAwesomeIcon icon={faClose} />
           </CloseBtn>
           <li>
@@ -136,7 +144,7 @@ export const Header = () => {
           <li>
             <Link to={"/search"}>Search</Link>
           </li>
-        </ul>
+        </MoMenuWrap>
       </MoMenu>
     </SHeader>
   );

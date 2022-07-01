@@ -88,12 +88,13 @@ const Desc = styled.p`
 
 const Btn = styled.div`
   width: 200px;
-  height: 70px;
+  height: 50px;
   border: 1px solid white;
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 `;
 
 export const MovieDetail = ({ movieData }) => {
