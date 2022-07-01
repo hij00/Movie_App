@@ -1,3 +1,5 @@
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -29,6 +31,8 @@ const Logo = styled.h3`
   a {
     color: ${mainStyle.mainColor};
   }
+  position: relative;
+  z-index: 1100;
   @media screen and (max-width: 500px) {
     font-size: 24px;
   }
@@ -38,6 +42,9 @@ const MenuWrap = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const Menu = styled.li`
@@ -47,6 +54,44 @@ const Menu = styled.li`
   @media screen and (max-width: 500px) {
     margin-left: 20px;
   }
+`;
+
+const MoMenu = styled.div`
+  ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  li {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 100px;
+    &:nth-child(1) {
+      font-size: 24px;
+    }
+  }
+`;
+
+const CloseBtn = styled.li`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 20px;
+  /* 클래스보다 자식선택자가 우선순위 더 높음 li의 자식선택자로 잡아주기*/
+`;
+// ul 태그 안으로 넣으면 li로 바꿔주기
+
+const MenuBtn = styled.div`
+  font-size: 30px;
 `;
 
 export const Header = () => {
@@ -74,6 +119,25 @@ export const Header = () => {
           <Link to={"/search"}>Search</Link>
         </Menu>
       </MenuWrap>
+
+      <MoMenu>
+        <MenuBtn>
+          <FontAwesomeIcon icon={faBars} />
+        </MenuBtn>
+
+        <ul>
+          <CloseBtn>
+            <FontAwesomeIcon icon={faClose} />
+          </CloseBtn>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+
+          <li>
+            <Link to={"/search"}>Search</Link>
+          </li>
+        </ul>
+      </MoMenu>
     </SHeader>
   );
 };
