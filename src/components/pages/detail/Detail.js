@@ -2,95 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
-import { imgUrl } from "../../../constants/constant";
 import { ScrollTop } from "../../../ScrollTop";
-import { mainStyle } from "../../../styles/globalStyle";
 import { Container } from "../../Container";
 import { Loading } from "../../Loading";
+import { MovieDetail } from "./MovieDetail";
 
-const Wrap = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 100px;
-  @media screen and (max-width: 500px) {
-    /* display: flex;
-    flex-direction: column; */
-    display: block;
-    /* padding: ${mainStyle.mPadding}; */
-    margin-top: 80px;
-  }
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 700px;
+  margin-top: 150px;
 `;
-
-const Con = styled.div`
-  width: 48%;
-
-  &:first-child {
-    height: 80vh;
-  }
-  @media screen and (max-width: 500px) {
-    width: 100%;
-    &:first-child {
-      height: 60vh;
-    }
-  }
-`;
-
-const Title = styled.h3`
-  font-size: 60px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  @media screen and (max-width: 500px) {
-    font-size: 45px;
-    margin: 15px 0 15px 0;
-  }
-`;
-
-const Release = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  @media screen and (max-width: 500px) {
-    font-size: 18px;
-  }
-`;
-
-const Runtime = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 20px;
-  @media screen and (max-width: 500px) {
-    font-size: 18px;
-  }
-`;
-
-const Genres = styled.ul`
-  font-size: 20px;
-  font-weight: 600;
-  li {
-    list-style: disc;
-    margin-bottom: 5px;
-  }
-  margin: 20px 0 40px 25px;
-  @media screen and (max-width: 500px) {
-    font-size: 18px;
-    margin: 15px 0 0 25px;
-  }
-`;
-
-const Desc = styled.p`
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 2.2rem;
-  margin-top: 30px;
-  opacity: 0.8;
-  letter-spacing: 0.5px;
-  @media screen and (max-width: 500px) {
-    font-size: 15px;
-    line-height: 1.8rem;
-    margin-top: 15px;
-    word-break: normal;
-  }
-`;
+// 영상 태그 iframe
 
 export const Detail = () => {
   // console.log(movieApi.movieDetail(453395));
@@ -115,6 +37,7 @@ export const Detail = () => {
   // ===============================
 
   const [movieData, setMovieData] = useState();
+  const [videoData, setVideoData] = useState();
   const [loading, setLoading] = useState(true);
   // 첫 화면 들어오면 로딩진행 true, 끝나면 false
 
@@ -136,6 +59,11 @@ export const Detail = () => {
       // setMovieData(data);
       // setLoading(false);
 
+      const {
+        data: { results },
+      } = await movieApi.movieVideo(id);
+      // console.log(results);
+
       try {
         const detail = await movieApi.movieDetail(id);
         // console.log(detail.data);
@@ -143,6 +71,12 @@ export const Detail = () => {
         const { data } = await detail;
         // console.log(data);
         setMovieData(data);
+
+        // 배열이 없을때 배열의 길이를 알아와서 없음 표시
+        // setVideoData(results.length === 0 ? null : results);
+        // 밑에 추가로 값 입력
+        setVideoData(results.length === 0 ? null : results[0].key);
+
         setLoading(false);
       } catch (error) {}
     };
@@ -153,7 +87,9 @@ export const Detail = () => {
 
   // movie_id = integer(정수, 12345, Number)
 
-  console.log(movieData);
+  // console.log(movieData);
+  // =================================
+  // console.log(videoData[0]);
 
   return (
     <>
@@ -162,35 +98,19 @@ export const Detail = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
-          {movieData && (
-            <Container>
-              <Wrap>
-                <Con
-                  style={{
-                    background: `url(${
-                      movieData.backdrop_path
-                        ? `${imgUrl}${movieData.backdrop_path}`
-                        : "https://mapandan.gov.ph/wp-content/uploads/2018/03/no_image.jpg"
-                    }) no-repeat center / cover`,
-                  }}
-                />
-                <Con>
-                  <Title>{movieData.title}</Title>
-                  <Release>개봉일 : {movieData.release_date}</Release>
-                  <Runtime>{movieData.runtime}분</Runtime>
-                  <Genres>
-                    {movieData.genres.map((gen) => (
-                      <li key={gen.id}>{gen.name}</li>
-                    ))}
-                  </Genres>
+        <Container>
+          {movieData && <MovieDetail movieData={movieData} />}
+          {videoData ? (
+            <Iframe
+              // src={`https://www.youtube.com/embed/${videoData[0].key}`}
+              src={`https://www.youtube.com/embed/${videoData}`}
+              allowfullscreen
+            ></Iframe>
+          ) : null}
+          {/* 아이프레임도 처리해주기 videoData가 없으면 null */}
+        </Container>
 
-                  <Desc>{movieData.overview}</Desc>
-                </Con>
-              </Wrap>
-            </Container>
-          )}
-        </>
+        // 클릭 alt 방향키
       )}
     </>
   );

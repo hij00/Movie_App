@@ -14,6 +14,7 @@ export const movieApi = {
   latest: () => api.get("/movie/latest"),
   upComing: () => api.get("/movie/upcoming"),
   movieDetail: (id) => api.get(`/movie/${id}`),
+  movieVideo: (id) => api.get(`/movie/${id}/videos`),
 };
 
 // const detail = (id) => {
