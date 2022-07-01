@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { imgUrl } from "../../../constants/constant";
+import { ScrollTop } from "../../../ScrollTop";
 import { mainStyle } from "../../../styles/globalStyle";
 import { Container } from "../../Container";
 import { Loading } from "../../Loading";
@@ -23,6 +24,7 @@ const Wrap = styled.div`
 
 const Con = styled.div`
   width: 48%;
+
   &:first-child {
     height: 80vh;
   }
@@ -155,6 +157,8 @@ export const Detail = () => {
 
   return (
     <>
+      <ScrollTop />
+      {/* 스크롤을 인식하고 나서 로딩하기 */}
       {loading ? (
         <Loading />
       ) : (
