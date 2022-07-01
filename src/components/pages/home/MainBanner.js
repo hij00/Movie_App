@@ -6,6 +6,7 @@ const Banner = styled.section`
   height: 80vh;
   padding: ${mainStyle.padding};
   padding-top: 250px;
+  position: relative;
   @media screen and (max-width: 500px) {
     height: 100vh;
     position: relative;
@@ -19,6 +20,9 @@ const Title = styled.h1`
   /* 브라우저를 늘려도 최대한의 가로길이가 650px */
   /* width: 100%; */
   line-height: 6rem;
+  z-index: 99;
+  position: relative;
+  /* z-index를 쓸땐 포지션 넣기?(다른게 포지션이 들어가있음) */
   @media screen and (max-width: 500px) {
     font-size: 45px;
     line-height: 3rem;
@@ -37,9 +41,26 @@ const Desc = styled.p`
   line-height: 2rem;
   opacity: 0.9;
   font-weight: 300;
+  z-index: 99;
+  position: relative;
   @media screen and (max-width: 500px) {
     display: none;
   }
+`;
+
+const BlackBg = styled.div`
+  width: 100%;
+  height: 60vh;
+  /* background-color: gray; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 99, 0) 80%,
+    rgba(0, 212, 255, 0) 100%
+  );
 `;
 
 export const MainBanner = ({ playData }) => {
@@ -53,6 +74,7 @@ export const MainBanner = ({ playData }) => {
       {/* 새로고침하면 인식안됨 => 한번 더 기다려야함? */}
       <Title>{playData.title}</Title>
       <Desc>{playData.overview.slice(0, 100) + "..."}</Desc>
+      <BlackBg></BlackBg>
     </Banner>
   );
 };

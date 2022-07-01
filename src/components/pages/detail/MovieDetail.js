@@ -86,6 +86,16 @@ const Desc = styled.p`
   }
 `;
 
+const Btn = styled.div`
+  width: 200px;
+  height: 70px;
+  border: 1px solid white;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const MovieDetail = ({ movieData }) => {
   return (
     <>
@@ -110,6 +120,7 @@ export const MovieDetail = ({ movieData }) => {
           </Genres>
 
           <Desc>{movieData.overview}</Desc>
+          <Btn>예고편 보기</Btn>
         </Con>
       </Wrap>
     </>
