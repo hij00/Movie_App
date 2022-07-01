@@ -7,7 +7,7 @@
 - [x] Package Install
 - [x] Router Setup
 - [x] Create Components
-- [x] Helmet
+- [x] HelmetPrivider
 - [x] Get Api
 - [x] Container
 - [x] Header Responsive
@@ -15,6 +15,7 @@
 
 ## Main Page
 
+- [x] Page Title
 - [x] Use Effect
 - [x] Try Catch
 - [x] Loading
@@ -26,6 +27,7 @@
 
 ## Detail Page
 
+- [x] Page Title
 - [x] Link
 - [x] Scroll Error
 - [x] Responsive
@@ -33,4 +35,9 @@
 
 ## Search Page
 
+- [x] Page Title
 - [ ] Css Grid
+
+## 404 Error
+
+- [x] Page Title

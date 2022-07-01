@@ -5,6 +5,7 @@ import { movieApi } from "../../../api";
 import { ScrollTop } from "../../../ScrollTop";
 import { Container } from "../../Container";
 import { Loading } from "../../Loading";
+import { PageTitle } from "../../PageTitle";
 import { MovieDetail } from "./MovieDetail";
 
 const Iframe = styled.iframe`
@@ -93,6 +94,7 @@ export const Detail = () => {
 
   return (
     <>
+      <PageTitle title={"detail"} />
       <ScrollTop />
       {/* 스크롤을 인식하고 나서 로딩하기 */}
       {loading ? (

@@ -6,6 +6,7 @@ import { MainBanner } from "./MainBanner";
 import "swiper/css";
 import { Container } from "../../Container";
 import { Movies } from "./Movies";
+import { PageTitle } from "../../PageTitle";
 
 export const Home = () => {
   const [playing, setPlaying] = useState();
@@ -64,6 +65,8 @@ export const Home = () => {
   // 함수 밖으로 뺄 때  useState => 저장하는 역할
   return (
     <div>
+      <PageTitle title={"Home"} />
+
       {/* => 삼항연산자 사용 */}
       {/* {playing ? <MainBanner
               style={{

@@ -1,3 +1,10 @@
+import { PageTitle } from "../../PageTitle";
+
 export const Search = () => {
-  return <>Search</>;
+  return (
+    <>
+      <PageTitle title={"search"} />
+      Search
+    </>
+  );
 };
