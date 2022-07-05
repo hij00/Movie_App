@@ -15,6 +15,12 @@ export const movieApi = {
   upComing: () => api.get("/movie/upcoming"),
   movieDetail: (id) => api.get(`/movie/${id}`),
   movieVideo: (id) => api.get(`/movie/${id}/videos`),
+  search: (term) =>
+    api.get(`/search/movie`, {
+      params: {
+        query: term,
+      },
+    }),
 };
 
 // const detail = (id) => {
@@ -24,3 +30,6 @@ export const movieApi = {
 // detail(12345)
 
 // => id = 12345
+// ====================
+// params = 속성 더 부여할때()
+// 쿼리에 매개변수, term or keyword
