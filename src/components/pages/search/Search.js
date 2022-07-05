@@ -60,6 +60,7 @@ export const Search = () => {
     getValues,
     formState: { errors },
     setError,
+    clearErrors,
   } = useForm({
     mode: "onChange",
     // onblur 클릭했을때 테두리
@@ -104,7 +105,7 @@ export const Search = () => {
     // async 쓰면 try
   };
 
-  console.log(errors);
+  // console.log(errors);
   // 폼상태 에러처리 담당
 
   // console.log(get);
@@ -120,6 +121,9 @@ export const Search = () => {
                 required: "내용은 필수입니다.",
                 // 메세지를 남기고 싶으면 required 에 작성
                 // 빈값일때는 메세지에 리콰이얼드 내용이 나옴
+                onChange() {
+                  clearErrors("result");
+                },
               })}
               type="text"
               placeholder="영화 검색"
@@ -131,7 +135,7 @@ export const Search = () => {
             {/* 메세지에 내용이 없음 */}
 
             {errors?.result?.message}
-            {/* => 서치랑 결과값이랑 값이 나옴(onChange때문, 에러가 남아있어서,,, 글을 다시 적으면 에러가 없어져야함) */}
+            {/* => 서치랑 결과값이랑 값이 나옴(onChange때문, 에러가 남아있어서,,, 글을 다시 적으면 에러가 없어져야함) => 에러삭제*/}
           </form>
         </SearchWrap>
         {loading ? (

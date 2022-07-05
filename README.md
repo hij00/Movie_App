@@ -40,7 +40,7 @@
 ## Search Page
 
 - [x] Page Title
-- [ ] Css Grid
+- [x] Css Display Grid
 
 ## 404 Error
 
