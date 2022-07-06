@@ -108,7 +108,7 @@ export const Search = () => {
   // console.log(errors);
   // 폼상태 에러처리 담당
 
-  // console.log(get);
+  console.log(scMovie);
 
   return (
     <>
