@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://hijeong_.github.io/Movie_App",
+  "homepage": "https://hij00.github.io/Movie_App",
   "eslintConfig": {
     "extends": [
       "react-app",
